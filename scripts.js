@@ -1,5 +1,28 @@
 let todoArray = [];
 
+class taskItem {
+	constructor(content, completed, important) {
+		// String - text of the to-do item itself
+		this.content = content;
+		// Boolean - if item is completed (default: false)
+		this.completed = completed;
+		// Boolean - if item was marked as important (default: false)
+		this.important = important; 
+	}
+
+	getContent() {
+		return this.content;
+	}
+
+	isCompleted() {
+		return this.completed;
+	}
+
+	isImportant() {
+		return this.important;
+	}
+}
+
 let addTodo = document
 	.querySelector('.btn-primary')
 	.addEventListener('click', addItem);
@@ -19,6 +42,31 @@ function addItem(click) {
 	let todoList = document.querySelector('#todoList');
 	let todoInput = document.querySelector('#todoInput').value;
 	let newTodo = document.createElement('li');
+
+	// The following code does the same as the below code,
+	// but it creates a new taskItem and pushes it into the todoArray.
+	// I've tested it and it's functional.
+	// - Mozen
+
+	// if (todoInput === "") {
+	//		alert('Please add a Task!');
+	// } else {
+	// 		let newTask = new taskItem(todoInput, false, isImportantTodo.checked);
+	// 		todoArray.push(newTask);
+	// 		newTodo.className = 'list-group-item todoItem';
+	// 		if (isImportantTodo.checked) {
+	//			newTodo.classList.add("important")
+	//		}
+	//		newTodo.textContent = newTask.getContent();
+	// 		document.querySelector('#todoInput').value = '';
+	// 		todoList.appendChild(newTodo);
+	//	}
+	// }
+	// ^ (end of function)
+
+
+
+
 	if (todoInput != '') {
 		newTodo.textContent = todoInput;
 		if (isImportantTodo.checked) {
