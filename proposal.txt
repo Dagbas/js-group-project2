@@ -1,0 +1,6 @@
+We will be working on the To Do List project.
+
+• It will include the ability to add, remevo and mark as completed
+• The user will be able to filter search for a particular ToDo Item.
+• The user will be able to edit existing To Do items.
+• The user will be able to set a priority of Important to any existing or new To Do Item. 
