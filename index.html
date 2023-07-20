@@ -14,13 +14,9 @@
     <h1 id="title">To Do List</h1>
     <!-- <input class="todoSearch" type="search" placeholder="search"><button class="btn btn-primary">Search</button> -->
   </header>
-  <div class="container">
-    <div id="todoList" class="list-group">
-      <button class="btn btn-danger">Remove</button>
-      <button class="btn btn-success">Complete</button>
-      <button class="btn btn-dark">Edit</button>
+    <div class="container" id="todoList">
+
     </div>
-  </div>
   <form>
 
     <div class="container">
@@ -28,7 +24,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">New Task</span>
         <input id="todoInput" type="text" class="form-control" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default">
-        <label for="isImportantTodo"><input checked type="checkbox" name="importantTodo" id="isImportantTodo"
+        <label for="isImportantTodo"><input type="checkbox" name="importantTodo" id="isImportantTodo"
             class="form-check-input" />
           Important</label>
         <button type="button" class="btn btn-primary">Add</button>

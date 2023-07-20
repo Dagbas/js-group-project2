@@ -9,3 +9,8 @@ We will be working on the To Do List project.
 Resources:
 - https://getbootstrap.com/docs/5.3/examples/badges/#
 Badges in Bootstrap - potentially for use as priority labels
+
+
+Right now, each time a task is added to the list, todoArray is updated in parallel.
+There should be a way to update the array and then update the display of tasks based on the array contents...
+No idea how to do that right now, but it would make the code more dry, and give us access to taskItem information after the task is displayed.

@@ -1,5 +1,10 @@
 let todoArray = [];
 
+/* Right now, each time a task is added to the list, todoArray is updated in parallel.
+There should be a way to update the array and then update the display of tasks based on the array contents...
+No idea how to do that right now, but it would make the code more dry, and give us access to taskItem information after the task is displayed.
+*/
+
 class taskItem {
 	constructor(content, completed, important) {
 		// String - text of the to-do item itself
@@ -34,7 +39,7 @@ function addItem(click) {
 	let todoList = document.querySelector('#todoList');
 	let todoInput = document.querySelector('#todoInput').value;
 	let newTodo = document.createElement('div');
-	newTodo.setAttribute("id", "`{Date.now()}`");
+	newTodo.setAttribute("id", `${Date.now()}`);
 	// Allows focus/blur CCS styling
 	newTodo.setAttribute("tabindex", "0");
 
@@ -49,14 +54,14 @@ function addItem(click) {
 			newTodo.classList.add("important")
 		}
 		newTodo.innerHTML = 
-		`<div class="task-content">
-			<h4>${newTask.getContent()}</h4>
+		`<div>
+			<p class="task-content">${newTask.getContent()}</p>
 		</div>
 		<div class="button-group">
 		</div>`
 		todoList.appendChild(newTodo);
 
-		// A different event listener is applied to each button
+		// Remove/complete/edit buttons are created, with a different event listener applied to each
 
 		let removeTodo = document.createElement("button");
 		removeTodo.className = "btn btn-danger";
@@ -81,19 +86,36 @@ function addItem(click) {
 		newTodo.children[1].appendChild(completeTodo);
 		newTodo.children[1].appendChild(editTodo);
 		
-	 		document.querySelector('#todoInput').value = '';
+
+		// Resets text box
+	 	document.querySelector('#todoInput').value = '';
 		}
 	 }
 
 
 function removeItem(click) {
-	todoList.removeChild(click);
+	click.target.parentNode.parentNode.remove();
 }
 
 function markComplete(click) {
+	let badge = document.createElement("span");
+	badge.className = "badge bg-success-subtle text-success-emphasis rounded-pill";
+	badge.innerText = "Completed";
+	click.target.parentNode.previousElementSibling.appendChild(badge);
 
 }
 
 function editContent(click) {
+	// This should probably be a variable. It points to the task-content element.
+	console.log(click.target.parentNode.previousElementSibling.children[0]);
+	let newContent = document.createElement("input");
+	newContent.setAttribute("type", "text");
+	newContent.setAttribute("value", click.target.parentNode.previousElementSibling.children[0].innerText);
+	click.target.parentNode.parentNode.appendChild(newContent);
 
+	/* Further progress for this function:
+		- hiding the remove/complete/edit button group to disable multiple text elements
+		- additional buttons, also with event listeners, to confirm or cancel the edit
+		- inserting the text box between its siblings and then removing the task-content element
+	*/
 }
