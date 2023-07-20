@@ -27,61 +27,73 @@ let addTodo = document
 	.querySelector('.btn-primary')
 	.addEventListener('click', addItem);
 
-// let todoList = document.querySelector('#todoList');
-// let todoInput = document.querySelector('#todoInput').textContent;
-// let newTodo = document.createElement('li');
-let removeTodo = document
-	.querySelector('.btn-danger')
-	.addEventListener('click', removeItem);
-let completeTodo = document.querySelector('.btn-success');
 let isImportantTodo = document.querySelector('#isImportantTodo');
-console.log(isImportantTodo);
 
 function addItem(click) {
 	click.preventDefault();
 	let todoList = document.querySelector('#todoList');
 	let todoInput = document.querySelector('#todoInput').value;
-	let newTodo = document.createElement('li');
-
-	// The following code does the same as the below code,
-	// but it creates a new taskItem and pushes it into the todoArray.
-	// I've tested it and it's functional.
-	// - Mozen
-
-	// if (todoInput === "") {
-	//		alert('Please add a Task!');
-	// } else {
-	// 		let newTask = new taskItem(todoInput, false, isImportantTodo.checked);
-	// 		todoArray.push(newTask);
-	// 		newTodo.className = 'list-group-item todoItem';
-	// 		if (isImportantTodo.checked) {
-	//			newTodo.classList.add("important")
-	//		}
-	//		newTodo.textContent = newTask.getContent();
-	// 		document.querySelector('#todoInput').value = '';
-	// 		todoList.appendChild(newTodo);
-	//	}
-	// }
-	// ^ (end of function)
+	let newTodo = document.createElement('div');
+	newTodo.setAttribute("id", "`{Date.now()}`");
+	// Allows focus/blur CCS styling
+	newTodo.setAttribute("tabindex", "0");
 
 
-
-
-	if (todoInput != '') {
-		newTodo.textContent = todoInput;
-		if (isImportantTodo.checked) {
-			newTodo.className = 'list-group-item todoItem important';
-		} else {
-			newTodo.className = 'list-group-item todoItem';
-		}
-		todoArray.push(todoList.appendChild(newTodo));
-		console.log(todoArray);
-		document.querySelector('#todoInput').value = '';
+	if (todoInput === "") {
+			alert('Please add a Task!');
 	} else {
-		alert('Please add a Task!');
-	}
-}
+		let newTask = new taskItem(todoInput, false, isImportantTodo.checked);
+		todoArray.push(newTask);
+		newTodo.className = 'todoItem';
+		if (isImportantTodo.checked) {
+			newTodo.classList.add("important")
+		}
+		newTodo.innerHTML = 
+		`<div class="task-content">
+			<h4>${newTask.getContent()}</h4>
+		</div>
+		<div class="button-group">
+		</div>`
+		todoList.appendChild(newTodo);
+
+		// A different event listener is applied to each button
+
+		let removeTodo = document.createElement("button");
+		removeTodo.className = "btn btn-danger";
+		removeTodo.innerText = "Remove";
+		removeTodo.addEventListener("click", removeItem);
+
+
+
+		let completeTodo = document.createElement("button");
+		completeTodo.className = "btn btn-success";
+		completeTodo.innerText = "Complete";
+		completeTodo.addEventListener("click", markComplete);
+		
+
+
+		let editTodo = document.createElement("button");
+		editTodo.className = "btn btn-dark";
+		editTodo.innerText = "Edit";
+		editTodo.addEventListener("click", editContent);
+
+		newTodo.children[1].appendChild(removeTodo);
+		newTodo.children[1].appendChild(completeTodo);
+		newTodo.children[1].appendChild(editTodo);
+		
+	 		document.querySelector('#todoInput').value = '';
+		}
+	 }
+
 
 function removeItem(click) {
 	todoList.removeChild(click);
+}
+
+function markComplete(click) {
+
+}
+
+function editContent(click) {
+
 }

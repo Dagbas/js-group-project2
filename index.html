@@ -12,17 +12,14 @@
 <body>
   <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
     <h1 id="title">To Do List</h1>
-    <!-- <input class="todoSearch" type="search" value="search"><button class="btn btn-primary">Search</button> -->
+    <!-- <input class="todoSearch" type="search" placeholder="search"><button class="btn btn-primary">Search</button> -->
   </header>
   <div class="container">
-    <ul id="todoList" class="list-group">
-      <!-- <li class="list-group-item todoItem" aria-current="true">Do Grocery Shopping</li> -->
-      <!-- <li class="list-group-item">Clean the Gutters</li> -->
-      <button class="btn btn-danger">Remove</button><button class="btn btn-success">Complete</button>
+    <div id="todoList" class="list-group">
+      <button class="btn btn-danger">Remove</button>
+      <button class="btn btn-success">Complete</button>
       <button class="btn btn-dark">Edit</button>
-      <!-- <li class="list-group-item">Walk the Dog</li>
-      <li class="list-group-item"> Pay the Light Bill </li> -->
-    </ul>
+    </div>
   </div>
   <form>
 
@@ -31,7 +28,7 @@
         <span class="input-group-text" id="inputGroup-sizing-default">New Task</span>
         <input id="todoInput" type="text" class="form-control" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default">
-        <label for="importantTodo"><input checked type="checkbox" name="importantTodo" id="isImportantTodo"
+        <label for="isImportantTodo"><input checked type="checkbox" name="importantTodo" id="isImportantTodo"
             class="form-check-input" />
           Important</label>
         <button type="button" class="btn btn-primary">Add</button>
