@@ -6,35 +6,50 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
-  <title>Document</title>
+  <link rel="stylesheet" href="main.css">
+  <title>The To Do List 1.0</title>
 </head>
 
-<body>
-  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
-    <h1 id="title">To Do List</h1>
-    <!-- <input class="todoSearch" type="search" placeholder="search"><button class="btn btn-primary">Search</button> -->
+<body class="bg-body-tertiary">
+  <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom bg-dark text-primary">
+
+    <h3 class="display-6">
+      The To Do List<ion-icon name="checkmark"></ion-icon>
+
+    </h3>
+    <small class="text-white-50">1.0</small>
   </header>
-    <div class="container" id="todoList">
-
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto mb-4" src="./images/list-logo.svg" alt="" width="72" height="57">
+    <h1 class="display-5 fw-bold">Welcome to our To Do List!</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">Never again miss an important task in your day.</p>
     </div>
-  <form>
+  </div>
+  <div class="container-fluid list-group w-75" id="todoList">
 
-    <div class="container">
-      <div class="input-group mt-3 mb-3">
-        <span class="input-group-text" id="inputGroup-sizing-default">New Task</span>
+  </div>
+  <form>
+    <div class="container-fluid w-75">
+      <div class="input-group mt-5 mb-3">
+        <span class="input-group-text text-primary" id="inputGroup-sizing-default">New Task</span>
         <input id="todoInput" type="text" class="form-control" aria-label="Sizing example input"
           aria-describedby="inputGroup-sizing-default">
-        <label for="isImportantTodo"><input type="checkbox" name="importantTodo" id="isImportantTodo"
-            class="form-check-input" />
-          Important</label>
-        <button type="button" class="btn btn-primary">Add</button>
-
+        <div class="input-group-append">
+          <label class="input-group-text rounded-0 bg-warning-subtle" for="isImportantTodo">
+            <input class="mx-1 form-check-input" type="checkbox" name="importantTodo" id="isImportantTodo">
+            Important
+          </label>
+        </div>
+        <button type="button" class="btn btn-primary"><ion-icon name="add-circle"></ion-icon> Add</button>
       </div>
     </div>
   </form>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz"
     crossorigin="anonymous"></script>
+  <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+  <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <script src="scripts.js"></script>
 </body>
 

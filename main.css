@@ -1,0 +1,28 @@
+/* Additional CSS styles for the buttons and btn-group */
+.btn-group {
+	opacity: 0;
+	display: none;
+	margin: 2px;
+	float: right;
+}
+
+/* CSS to show the btn-group on hover */
+.todoItem:hover .btn-group {
+	display: flex;
+	opacity: 1;
+	transition: opacity 0.3s ease-in;
+}
+
+/* Additional CSS styles for the task items */
+.todoItem {
+	display: inline-block; /* Use inline-flex to only take up the space of its content */
+	transition: background-color 0.3s ease-in, opacity 0.3s ease-in; /* Set the transition on the default state, include opacity */
+	padding: 5px; /* Adjust the padding as needed */
+	align-items: center; /* Align the content and buttons vertically */
+}
+
+/* CSS to highlight the task item on hover */
+.todoItem:hover {
+	background-color: #f5f5f5; /* Add a subtle background color change on hover */
+	opacity: 1; /* Set opacity to 1 on hover to prevent opacity being transitioned from the default 0 */
+}
