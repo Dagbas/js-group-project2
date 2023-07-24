@@ -103,7 +103,7 @@ function addItem(click) {
 function removeItem(click) {
 	if (
 		confirm(
-			"Are you sure you wish to remove this Taks? (This action can't be undone."
+			"Are you sure you wish to remove this Task? (This action can't be undone."
 		)
 	) {
 		click.target.parentNode.parentNode.remove();
