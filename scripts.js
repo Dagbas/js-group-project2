@@ -24,6 +24,10 @@ class taskItem {
 	isImportant() {
 		return this.important;
 	}
+
+	getId() {
+		return this.taskID;
+	}
 }
 
 let addTodo = document
@@ -38,9 +42,6 @@ function addItem(click) {
 	let todoList = document.querySelector('#todoList');
 	let todoInput = document.querySelector('#todoInput').value;
 	let newTodo = document.createElement('div');
-	newTodo.setAttribute('id', `${Date.now()}`);
-	// Allows focus/blur CCS styling
-	newTodo.setAttribute('tabindex', '0');
 
 	if (todoInput === '') {
 		alert('Please add a Task!');
@@ -48,6 +49,7 @@ function addItem(click) {
 		let newTask = new taskItem(todoInput, false, isImportantTodo.checked);
 		todoArray.push(newTask);
 		newTodo.className = 'todoItem border border-tertiary rounded p-2 mb-1';
+		newTodo.setAttribute('id', newTask.getId());
 		newTodo.innerHTML = `<div>
 	<p class="task-content m-1">${newTask.getContent()}</p>
 	</div>
@@ -103,11 +105,17 @@ function addItem(click) {
 function removeItem(click) {
 	if (
 		confirm(
-			"Are you sure you wish to remove this Task? (This action can't be undone."
+			"Are you sure you wish to remove this Task? (This action can't be undone.)"
 		)
 	) {
-		click.target.parentNode.parentNode.remove();
-	} else {
+		// The following DOM traversal goes up two levels (to btn-group and then to the div enclosing the entire task).
+		let parentElement = click.target.parentNode.parentNode;
+
+		let taskToDelete = todoArray.find((todo) => {
+			return todo.taskID == parentElement.id;
+		});		
+		todoArray.splice(todoArray.indexOf(taskToDelete), 1);
+		parentElement.remove();
 	}
 }
 
@@ -124,8 +132,7 @@ function markComplete(click) {
 }
 
 function editContent(click) {
-	// This should probably be a variable. It points to the task-content m-1 element.
-	/**/
+	// taskContent points to the task-content m-1 element.
 	let taskContent = click.target.parentNode.previousElementSibling.children[0];
 	if (!document.querySelector('#editBox')) {
 		let newContent = document.createElement('div');
